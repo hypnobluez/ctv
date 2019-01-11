@@ -1,0 +1,9 @@
+.position {cursor:pointer;}
+.company {padding-left:15px; padding-top:10px;}
+.custom-bullet li {display: block;}
+.custom-bullet li:before {content: "\e080"; font-family: 'Glyphicons Halflings'; font-size: 9px; float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: blue;}
+
+.hand {cursor:pointer; margin-right:50px;}

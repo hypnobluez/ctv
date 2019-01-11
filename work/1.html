@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Expand Collapse Headings</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<style type="text/css">
+		.hd-button {
+			color: #ffffff !important;
+			border-color: #dbdbdb !important;
+			background-color: #f4f4f4 !important;
+			border-width: 1px;
+			width: 100%;
+			text-decoration: none !important;
+			text-align: left;
+			font-size: 18px;
+			padding: 0px 15px 0px 5px;
+		}
+
+		.glyphicon-plus {
+			padding: 0px 20px 0px 10px;
+		}
+
+		.glyphicon-minus {
+			padding: 0px 20px 0px 10px;
+		}
+
+		.hd-box {
+			padding: 10px 20px 10px 20px;
+			border-radius: 2px;
+			border: 1px solid #dbdbdb;
+			background-color: #ffffff;
+			margin: 0px 0px 10px 0px;
+		}
+	</style>
+	<script>
+		$('.collapse').on('shown.bs.collapse', function () {
+			$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+		});
+
+		$('.collapse').on('hidden.bs.collapse', function () {
+			$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+		});
+
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<section id="sec-one">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-one" style="color: #585858 !important; text-decoration: none !important;">Heading -one</a>
+			</h2>
+
+			<div class="collapse" id="get-one">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-two">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-two" style="color: #585858 !important; text-decoration: none !important;">Heading -two</a>
+			</h2>
+
+			<div class="collapse" id="get-two">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-three">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-three" style="color: #585858 !important; text-decoration: none !important;">Heading -three</a>
+			</h2>
+
+			<div class="collapse" id="get-three">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-four">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-four" style="color: #585858 !important; text-decoration: none !important;">Heading -four</a>
+			</h2>
+
+			<div class="collapse" id="get-four">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-five">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-five" style="color: #585858 !important; text-decoration: none !important;">Heading -five</a>
+			</h2>
+
+			<div class="collapse" id="get-five">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-six">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-six" style="color: #585858 !important; text-decoration: none !important;">Heading -six</a>
+			</h2>
+
+			<div class="collapse" id="get-six">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-seven">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-seven" style="color: #585858 !important; text-decoration: none !important;">Heading -seven</a>
+			</h2>
+
+			<div class="collapse" id="get-seven">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-eight">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-eight" style="color: #585858 !important; text-decoration: none !important;">Heading -eight</a>
+			</h2>
+
+			<div class="collapse" id="get-eight">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-nine">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-nine" style="color: #585858 !important; text-decoration: none !important;">Heading -nine</a>
+			</h2>
+
+			<div class="collapse" id="get-nine">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-ten">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-ten" style="color: #585858 !important; text-decoration: none !important;">Heading -ten</a>
+			</h2>
+
+			<div class="collapse" id="get-ten">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-eleven">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-eleven" style="color: #585858 !important; text-decoration: none !important;">Heading -eleven</a>
+			</h2>
+
+			<div class="collapse" id="get-eleven">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-twelve">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-twelve" style="color: #585858 !important; text-decoration: none !important;">Heading -twelve</a>
+			</h2>
+
+			<div class="collapse" id="get-twelve">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-thirteen">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-thirteen" style="color: #585858 !important; text-decoration: none !important;">Heading -thirteen</a>
+			</h2>
+
+			<div class="collapse" id="get-thirteen">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-fourteen">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-fourteen" style="color: #585858 !important; text-decoration: none !important;">Heading -fourteen</a>
+			</h2>
+
+			<div class="collapse" id="get-fourteen">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="sec-fifteen">
+			<h2>
+				<a class="btn dropdown-toggle hd-button" data-toggle="collapse" href="#get-fifteen" style="color: #585858 !important; text-decoration: none !important;">Heading -fifteen</a>
+			</h2>
+
+			<div class="collapse" id="get-fifteen">
+				<div class="hd-box">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+						voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+						sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+						non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+						vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+						fugiat quo voluptas nulla pariatur?</p>
+				</div>
+			</div>
+		</section>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+
+			$(document).ready(function () {
+				$('.collapse').on('shown.bs.collapse', function () {
+					$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass(
+						"glyphicon-minus");
+				});
+			});
+			$(document).ready(function () {
+				$('.collapse').on('hidden.bs.collapse', function () {
+					$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass(
+						"glyphicon-plus");
+				});
+			});
+		
+		</script>
+</body>
+
+
+</html>

@@ -1,0 +1,44 @@
+a, a:link, a:visited, a:focus {
+	color: #009;
+	text-decoration: none;
+	border-bottom: 1px dotted #000;
+}
+a:hover {
+	text-decoration: none;
+	border-bottom: 1px solid #009;
+}
+
+body {
+	background: #fff;
+	margin: 10px;
+	font: 0.7em/1.3em Verdana,Arial,Helvetica,sans-serif;
+}
+ul {
+	list-style: none;
+	text-decoration:none;
+}
+
+span:hover {text-decoration:none;}
+a:hover {text-decoration:none;}
+div:hover {text-decoration:none;}
+span.x-plus {text-decoration:none;}
+span.x-plus:hover {text-decoration:none;}
+
+
+
+
+.symbol {border-bottom: none; text-decoration:none;}
+.symbol:hover {text-decoration:none;}
+
+.hand-expand {cursor:pointer; margin-right:5px;}
+
+/* Plus Minus Expander */
+
+.hidden {display:none;}
+
+.bigspan {font-size: 20px;}
+.x-minus {color:darkgoldenrod; font-size: 22px; margin: 1px 1px 2px 3px; padding: 1px 1px 2px 3px;}
+.x-plus {color: green; text-decoration: none; margin: 1px 1px 1px 1px; padding: 1px 1px 1px 1px;}
+.x-plus:hover {text-decoration: none;}
+.x-div {width: 300px; max-width: 350px;}
+.x-div:hover {color:teal; text-decoration: none;}
