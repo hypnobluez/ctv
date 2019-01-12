@@ -5,38 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../../css/tooltip.css" />
   <title>Tooltips</title>
 </head>
 
 <body>
-  <h1>CSS Directional Tooltips</h1>
 
-  <div class="demo">
+  <div>
     <p>
-      Data attribute only
+      <code>With Data Attribute only</code>
       <a href="#" data-tooltip="I’m the tooltip text">Tooltip</a>
     </p>
+
     <p>
-      <code>.tooltip</code>
-      <a href="#" class="tooltip" data-tooltip="I’m the tooltip text.">Tooltip</a>
+      <code>With Class</code>
+      <a href="#" class="toolTip" data-tooltip="I’m the tooltip text.">Tooltip</a>
     </p>
-    <p>
-      <code>.tooltip-top</code>
-      <a href="#" class="tooltip-top" data-tooltip="I’m the tooltip text.">Tooltip</a>
-    </p>
-    <p>
-      <code>.tooltip-right</code>
-      <a href="#" class="tooltip-right" data-tooltip="I’m the tooltip text.">Tooltip</a>
-    </p>
-    <p>
-      <code>.tooltip-bottom</code>
-      <a href="#" class="tooltip-bottom" data-tooltip="I’m the tooltip text.">Tooltip</a>
-    </p>
-    <p>
-      <a href="#" class="tooltip-left" data-tooltip="I’m the tooltip text.">Tooltip</a>
-      <code>.tooltip-left</code>
-    </p>
+    <div class="teal" data-tooltip="I’m the tooltip on the div. The text could be as long as you would like"></div>
+
   </div>
 </body>
 
