@@ -16,7 +16,7 @@
 
     .my-row {
       border: 3px solid darkred;
-      height: 100px;
+      min-height: 100px;
     }
 
     .my-row:nth-child(odd) {
@@ -25,6 +25,14 @@
 
     .my-col {
       border: 3px dotted blue;
+    }
+
+    .my-col:nth-child(odd) {
+      background: rgb(178, 204, 127);
+    }
+
+    .my-col:nth-child(even) {
+      background: rgb(100, 202, 139)
     }
   </style>
 </head>
@@ -211,6 +219,36 @@
         Row 6 Col 9
       </div>
     </div>
+    <div class="row my-row align-items-start">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col align-self-end">
+        Row 7 Col 1
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col align-self-center">
+        Row 7 Col 2
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 7 Col 3
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 7 Col 4
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 7 Col 5
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 7 Col 6
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 7 Col 7
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 7 Col 8
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 7 Col 9
+      </div>
+    </div>
+
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
