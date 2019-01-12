@@ -1,273 +1,120 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Fancy Tiles</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/work.css" />
+  </head>
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Fancy Tiles</title>
-	<meta content="width=device-width, initial-scale=1" name="viewport">
-	<meta content="no-cache" http-equiv="Pragma">
-	<meta content="-1" http-equiv="Expires">
-	<meta http-equiv="cache-control" content="max-age=0" />
-	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="expires" content="0" />
-	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<style type="text/css">
-		.no-space {
-			padding: 4px 7px 4px 3px !important;
-			margin: 0px !important;
-			align: center;
-		}
-
-		.button-style {
-			height: 177px;
-			width: 177px;
-			border-width: 4px !important;
-			color: white;
-			padding: 5px 5px 5px 5px;
-			text-align: center;
-			vertical-align: bottom;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 17px;
-			font-weight: bold;
-			overflow-wrap: break-word;
-		}
-
-		.half-button-style {
-			height: 85px;
-			width: 177px;
-			border-width: 4px !important;
-			color: white;
-			padding: 5px 5px 5px 5px;
-			text-align: center;
-			vertical-align: bottom;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 17px;
-			font-weight: bold;
-			overflow-wrap: break-word;
-		}
-
-		.ocean-bk {
-			background-color: #41748D;
-		}
-
-		.ocean-bk:hover {
-			color: #41748D;
-			border-color: #41748D;
-		}
-
-		.orange-bk {
-			background-color: #f58400;
-		}
-
-		.orange-bk:hover {
-			color: #f58400;
-			border-color: #f58400;
-			background-color: #ffffff;
-		}
-
-		.cg-bk {
-			background-color: #a7a8aa;
-		}
-
-		.cg-bk:hover {
-			color: #a7a8aa;
-			border-color: #a7a8aa;
-			background-color: #ffffff;
-		}
-
-		.grey-bk {
-			background-color: #3D3935;
-		}
-
-		.grey-bk:hover {
-			color: #3D3935;
-			border-color: #3D3935;
-			background-color: #ffffff;
-		}
-
-		.tangerine-bk {
-			background-color: #e35205;
-		}
-
-		.tangerine-bk:hover {
-			color: #e35205;
-			border-color: #e35205;
-			background-color: #ffffff;
-		}
-
-		.plum-bk {
-			background-color: #582D40;
-		}
-
-		.plum-bk:hover {
-			color: #582D40;
-			border-color: #582D40;
-			background-color: #ffffff;
-		}
-
-		.granite-bk {
-			background-color: #647c7d;
-		}
-
-		.granite-bk:hover {
-			color: #647c7d;
-			border-color: #647c7d;
-			background-color: #ffffff;
-		}
-
-		.big-button-style {
-			height: 360px;
-			width: 177px;
-			border-width: 4px;
-			color: white;
-			padding: 5px 5px 5px 5px;
-			text-align: center;
-			vertical-align: bottom;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 25px;
-			font-weight: bold;
-			overflow-wrap: break-word;
-		}
-
-		.long-button-style {
-			height: 177px;
-			width: 360px;
-			border-width: 4px;
-			color: white;
-			padding: 5px 5px 5px 5px;
-			text-align: center;
-			vertical-align: bottom;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 25px;
-			font-weight: bold;
-			overflow-wrap: break-word;
-		}
-
-		.button-style:hover {
-			background-color: #ffffff;
-		}
-
-		.big-button-style:hover {
-			background-color: #ffffff;
-		}
-
-		.long-button-style:hover {
-			background-color: #ffffff;
-		}
-
-		.icon-style {
-			font-size: 80px !important;
-			padding: 10px 0px 15px 0px;
-		}
-
-		.gly-rotate-45 {
-			filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=1);
-			-webkit-transform: rotate(45deg);
-			-moz-transform: rotate(45deg);
-			-ms-transform: rotate(45deg);
-			-o-transform: rotate(45deg);
-			transform: rotate(45deg);
-		}
-
-		.page-middle {
-			position: absolute;
-			color: #fff;
-			top: 50%;
-			left: 50%;
-			padding: 15px;
-			-ms-transform: translateX(-50%) translateY(-50%);
-			-webkit-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-		}
-	</style>
-</head>
-
-<body>
-	<div class="container">
-		<div class="page-middle">
-			<table>
-				<tbody>
-					<tr>
-						<td class="no-space" rowspan="2">
-							<button class="btn btn-secondary button-style tangerine-bk">
-								<br /> Travel
-							</button>
-						</td>
-						<td class="no-space" rowspan="2">
-							<button class="btn btn-secondary button-style granite-bk">
-								<br /> Delegations
-							</button>
-						</td>
-						<td class="no-space" colspan="2" rowspan="2">
-							<button class="btn btn-secondary button-style plum-bk">
-								<br /> CEIs &amp; ASMs</button>
-						</td>
-						<td class="ms-rteTableOddCol-0 no-space" rowspan="1">
-							<button class="btn btn-secondary half-button-style orange-bk">&nbsp; SAP</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="no-space no-space no-space" rowspan="1">
-							<button class="btn btn-secondary half-button-style cg-bk">TM1 MIS</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="no-space" rowspan="2">
-							<button class="btn btn-secondary button-style ocean-bk">
-								<br /> Payments
-							</button>
-						</td>
-						<td class="ms-rteTableOddCol-0 no-space" colspan="1" rowspan="1">
-							<button class="btn btn-secondary half-button-style grey-bk">Budget Exchange
-								<br /> Rate
-							</button>
-						</td>
-						<td class="no-space" colspan="2" rowspan="2">
-							<button class="btn btn-secondary button-style tangerine-bk">
-								<br /> Payments
-							</button>
-						</td>
-						<td class="ms-rteTableOddCol-0 no-space" rowspan="2">
-							<button class="btn btn-secondary button-style granite-bk">
-								<br /> Budgeting
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="no-space" colspan="1" rowspan="1">
-							<button class="btn btn-secondary half-button-style plum-bk" style="text-align: center;">GL Codes</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="no-space">
-							<button class="btn btn-secondary button-style orange-bk">
-								<br /> Budgeting
-							</button>
-						</td>
-						<td class="no-space no-space">
-							<button class="btn btn-secondary button-style cg-bk">
-								<br /> Financial Advice</button>
-						</td>
-						<td class="no-space" colspan="2">
-							<button class="btn btn-secondary button-style ocean-bk">
-								<br /> Office Managers</button>
-						</td>
-						<td class="no-space">
-							<button class="btn btn-secondary button-style grey-bk">
-								<br /> Help &amp; Resources</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</body>
-
+  <body>
+    <div class="container">
+      <div class="page-middle">
+        <table>
+          <tbody>
+            <tr>
+              <td class="no-space" rowspan="2">
+                <button class="btn btn-secondary button-style tangerine-bk">
+                  <br />
+                  Travel
+                </button>
+              </td>
+              <td class="no-space" rowspan="2">
+                <button class="btn btn-secondary button-style granite-bk">
+                  <br />
+                  Delegations
+                </button>
+              </td>
+              <td class="no-space" colspan="2" rowspan="2">
+                <button class="btn btn-secondary button-style plum-bk">
+                  <br />
+                  CEIs &amp; ASMs
+                </button>
+              </td>
+              <td class="ms-rteTableOddCol-0 no-space" rowspan="1">
+                <button class="btn btn-secondary half-button-style orange-bk">
+                  &nbsp; SAP
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="no-space no-space no-space" rowspan="1">
+                <button class="btn btn-secondary half-button-style cg-bk">
+                  TM1 MIS
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="no-space" rowspan="2">
+                <button class="btn btn-secondary button-style ocean-bk">
+                  <br />
+                  Payments
+                </button>
+              </td>
+              <td class="ms-rteTableOddCol-0 no-space" colspan="1" rowspan="1">
+                <button class="btn btn-secondary half-button-style grey-bk">
+                  Budget Exchange <br />
+                  Rate
+                </button>
+              </td>
+              <td class="no-space" colspan="2" rowspan="2">
+                <button class="btn btn-secondary button-style tangerine-bk">
+                  <br />
+                  Payments
+                </button>
+              </td>
+              <td class="ms-rteTableOddCol-0 no-space" rowspan="2">
+                <button class="btn btn-secondary button-style granite-bk">
+                  <br />
+                  Budgeting
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="no-space" colspan="1" rowspan="1">
+                <button
+                  class="btn btn-secondary half-button-style plum-bk"
+                  style="text-align: center;"
+                >
+                  GL Codes
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="no-space">
+                <button class="btn btn-secondary button-style orange-bk">
+                  <br />
+                  Budgeting
+                </button>
+              </td>
+              <td class="no-space no-space">
+                <button class="btn btn-secondary button-style cg-bk">
+                  <br />
+                  Financial Advice
+                </button>
+              </td>
+              <td class="no-space" colspan="2">
+                <button class="btn btn-secondary button-style ocean-bk">
+                  <br />
+                  Office Managers
+                </button>
+              </td>
+              <td class="no-space">
+                <button class="btn btn-secondary button-style grey-bk">
+                  <br />
+                  Help &amp; Resources
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
 </html>
