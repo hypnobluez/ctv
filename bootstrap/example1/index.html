@@ -7,87 +7,210 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
   <style>
     body {
-      color: #fff;
-      font-family: "Nunito Semibold";
-      text-align: center;
+      margin: 30px;
     }
 
-    #content {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: minmax(100px, auto);
-      grid-gap: 10px;
-      max-width: 960px;
-      margin: 0 auto;
-      grid-template-areas:
-        "header header header header"
-        "footer footer footer footer"
-        "main main main main"
-        "main main main main"
-        "aside aside nav nav"
-        "section section section section"
-        "section section section section";
+    .my-container {
+      border: 5px solid teal;
     }
 
-    /* desktop grid */
-    @media screen and (min-width: 760px) {
-      #content {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: minmax(100px, auto);
-        grid-gap: 10px;
-        max-width: 960px;
-        margin: 0 auto;
-        grid-template-areas:
-          "header header header header"
-          "aside main main main"
-          "nav main main main"
-          "section section section section"
-          "section section section section"
-          "footer footer footer footer";
-      }
+    .my-row {
+      border: 3px solid darkred;
+      height: 100px;
     }
 
-    #content>* {
-      background: #3bbced;
-      padding: 30px;
+    .my-row:nth-child(odd) {
+      background: rgb(183, 208, 209);
     }
 
-    header {
-      grid-area: header;
-    }
-
-    main {
-      grid-area: main;
-    }
-
-    aside {
-      grid-area: aside;
-    }
-
-    nav {
-      grid-area: nav;
-    }
-
-    section {
-      grid-area: section;
-    }
-
-    footer {
-      grid-area: footer;
-      background: #333 !important;
+    .my-col {
+      border: 3px dotted blue;
     }
   </style>
 </head>
 
 <body>
-  <div id="content">
-    <header>Header</header>
-    <main>Main</main>
-    <section>Section</section>
-    <aside>Aside</aside>
-    <nav>Nav</nav>
-    <footer>Footer</footer>
+  <div class="container my-container">
+    <div class="row my-row justify-content-center">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 1
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 2
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 3
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 4
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 5
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 6
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 7
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 8
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 1 Col 9
+      </div>
+    </div>
+    <div class="row my-row justify-content-start">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 1
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 2
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 3
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 4
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 5
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 6
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 7
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 8
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 2 Col 9
+      </div>
+    </div>
+    <div class="row my-row justify-content-end">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 1
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 2
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 3
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 4
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 5
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 6
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 7
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 8
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 3 Col 9
+      </div>
+    </div>
+
+
+    <div class="row my-row justify-content-around">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 1
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 2
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 3
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 4
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 5
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 6
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 7
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 8
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 4 Col 9
+      </div>
+    </div>
+
+    <div class="row my-row justify-content-between">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 1
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 2
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 3
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 4
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 5
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 6
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 7
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 8
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 5 Col 9
+      </div>
+    </div>
+
+
+
+    <div class="row my-row align-items-center">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 1
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 2
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 3
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 4
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 5
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 6
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 7
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 8
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 my-col">
+        Row 6 Col 9
+      </div>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
