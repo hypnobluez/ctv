@@ -4,6 +4,10 @@ git config user.name "hypnobluez"
 git config user.email "hypnobluez@gmail.com"
 git config --local credential.helper ""
 
+IMPORTANT!!!
+Control Panel >> Credential Manager and update git username.
+Otherwise, you won't be able to push
+
 Clear credential.helper
 git config --local credential.helper ""
 
