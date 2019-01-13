@@ -1,7 +1,7 @@
 IMPORTANT!!!
 Set username and credential.helper locally only: 
-git config user.name "ygazont"
-git config user.email "ygazont@gmail.com
+git config user.name "hypnobluez"
+git config user.email "hypnobluez@gmail.com
 git config --local credential.helper ""
 
 Clear credential.helper
