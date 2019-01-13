@@ -1,7 +1,7 @@
 IMPORTANT!!!
 Set username and credential.helper locally only: 
 git config user.name "hypnobluez"
-git config user.email "hypnobluez@gmail.com
+git config user.email "hypnobluez@gmail.com"
 git config --local credential.helper ""
 
 Clear credential.helper
@@ -12,7 +12,7 @@ git config --list --show-origin
 
 IMPORTANT!!! pulling first time
 git init [the folder]
-git remote add origin https://github.com/ygazont/cdv.git
+git remote add origin https://github.com/hypnobluez/ctv.git
 git fetch --all
 git pull --all
 git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
