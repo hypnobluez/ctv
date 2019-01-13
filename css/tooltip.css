@@ -9,6 +9,13 @@
    height: 10rem;
    width: 10rem;
  }
+ div.purple {
+   background: rgb(81, 0, 128);
+   border: 2px solid rgb(42, 0, 139);
+   border-radius: 10px;
+   height: 5rem;
+   width: 15rem;
+ }
 
  /* WITH CLASS start */
 
@@ -165,3 +172,85 @@
    -moz-transform: translateY(-12px);
    transform: translateY(-12px);
  }
+
+
+/************ WHITE TOOLTIP START **********/
+body.white-tooltip {
+  background: lightgrey;
+  margin: 6rem 2rem 2rem 4rem;
+}
+ [data-tooltip-white] {
+  position: relative;
+  cursor: pointer;
+}
+[data-tooltip-white]::after {
+  display: none;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  padding: 3px 5px;
+  width: 200px;
+  transform: translateX(-50%);
+  border: 1px solid #c9e0ef;
+  border-radius: 3px;
+  color: #3f517e;
+  background-color: #fff;
+  pointer-events: none;
+  content: attr(data-tooltip-white);
+}
+[data-tooltip-white]::before {
+  display: none;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, 50%) rotate(45deg);
+  width: 6px;
+  height: 6px;
+  border: solid #c9e0ef;
+  border-width: 0 1px 1px 0;
+  background-color: #fff;
+  content: '';
+}
+
+[data-tooltip-white]:focus, [data-tooltip-white]:hover {
+  text-decoration: underline;
+}
+[data-tooltip-white]:focus::after, [data-tooltip-white]:focus::before, [data-tooltip-white]:hover::after, [data-tooltip-white]:hover::before {
+  display: block;
+}
+[data-tooltip-white][data-side="right"]::after, [data-tooltip-white][data-side="right"]::before {
+  bottom: 50%;
+  left: 100%;
+  margin-left: 10px;
+}
+[data-tooltip-white][data-side="right"]::after {
+  transform: translate(0, 50%);
+}
+[data-tooltip-white][data-side="right"]::before {
+  transform: translate(-50%, 50%) rotate(135deg);
+}
+[data-tooltip-white][data-side="bottom"]::after, [data-tooltip-white][data-side="bottom"]::before {
+  bottom: auto;
+  top: 110%;
+}
+[data-tooltip-white][data-side="bottom"]::after {
+  transform: translate(-50%, 0);
+}
+[data-tooltip-white][data-side="bottom"]::before {
+  transform: translate(-50%, -50%) rotate(225deg);
+}
+[data-tooltip-white][data-side="left"]::after, [data-tooltip-white][data-side="left"]::before {
+  right: 100%;
+  bottom: 50%;
+  left: auto;
+  margin-right: 10px;
+}
+[data-tooltip-white][data-side="left"]::after {
+  transform: translate(0, 50%);
+}
+[data-tooltip-white][data-side="left"]::before {
+  transform: translate(50%, 50%) rotate(315deg);
+}
+
+/* WHITE TOOLTIP END */
