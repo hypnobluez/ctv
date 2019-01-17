@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $(".pnt-toggle > div").click(function() {
+$(document).ready(function () {
+  $(".pnt-toggle > div").click(function () {
     $(this)
       .find("div.itm-toggle")
       .not($(this).siblings())

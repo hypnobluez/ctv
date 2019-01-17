@@ -47,6 +47,7 @@
   border: 1px solid #325d81;
   background-color: #ffffff;
   margin: 0px 0px 10px 0px;
+  width:fit-content;
 }
 
 .glyphicon-plus {
