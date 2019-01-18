@@ -1,128 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Grid</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    <link href="../css/expand.css" rel="stylesheet" type="text/css" />
-    <link href="../css/work.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lesson 10</title>
+    <style>
+      body {
+        color: #fff;
+        font-family: "Nunito Semibold";
+        text-align: center;
+      }
+      #content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        grid-gap: 10px;
+        max-width: 960px;
+        margin: 0 auto;
+        grid-template-areas:
+          "header header header header"
+          "footer footer footer footer"
+          "main main main main"
+          "main main main main"
+          "aside aside nav nav"
+          "section section section section"
+          "section section section section";
+      }
+      /* desktop grid */
+      @media screen and (min-width: 760px) {
+        #content {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: minmax(100px, auto);
+          grid-gap: 10px;
+          max-width: 960px;
+          margin: 0 auto;
+          grid-template-areas:
+            "header header header header"
+            "aside main main main"
+            "nav main main main"
+            "section section section section"
+            "section section section section"
+            "footer footer footer footer";
+        }
+      }
+      #content > * {
+        background: #3bbced;
+        padding: 30px;
+      }
+      header {
+        grid-area: header;
+      }
+      main {
+        grid-area: main;
+      }
+      aside {
+        grid-area: aside;
+      }
+      nav {
+        grid-area: nav;
+      }
+      section {
+        grid-area: section;
+      }
+      footer {
+        grid-area: footer;
+        background: #333 !important;
+      }
+    </style>
   </head>
   <body>
-    <div class="grid-wrapper">
-      <div id="column1"></div>
-      <div id="column2" class="grid-wrapper-nested">
-        <!-- GRID START -->
-
-        <div class="pnt pnt-toggle">
-          <div class="itm x-div">
-            <span class="hand-expand bigspan"
-              ><a class="symbol"> <span class="x-plus"></span> </a> Grid</span
-            >
-          </div>
-
-          <div class="itm-toggle hidden blue-box">
-            <h4>Lesson 1</h4>
-
-            <ul>
-              <li>
-                <a href="../grid/lesson1/flex.html" target="_blank">Flex</a>
-              </li>
-              <li>
-                <a href="../grid/lesson1/float.html" target="_blank">Floats</a>
-              </li>
-              <li>
-                <a href="../grid/lesson1/grids.html" target="_blank">Grids</a>
-              </li>
-            </ul>
-            <h4>Lesson 2</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson2/index.html" target="_blank"
-                  >Lesson 2</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 3</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson3/index.html" target="_blank"
-                  >Lesson 3</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 4</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson4/index.html" target="_blank"
-                  >Lesson 4</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 5</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson5/index.html" target="_blank"
-                  >Lesson 5</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 6</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson6/index.html" target="_blank"
-                  >Lesson 6</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 7</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson7/index.html" target="_blank"
-                  >Lesson 7</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 8</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson8/index.html" target="_blank"
-                  >Lesson 8</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 9</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson9/index.html" target="_blank"
-                  >Lesson 9</a
-                >
-              </li>
-            </ul>
-            <h4>Lesson 10</h4>
-            <ul>
-              <li>
-                <a href="../grid/lesson10/index.html" target="_blank"
-                  >Lesson 10</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- GRID END -->
-      </div>
-      <div id="column3"></div>
+    <div id="content">
+      <header>Header</header>
+      <main>Main</main>
+      <section>Section</section>
+      <aside>Aside</aside>
+      <nav>Nav</nav>
+      <footer>Footer</footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script src="../js/expand.js"></script>
   </body>
 </html>

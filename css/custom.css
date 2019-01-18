@@ -7,3 +7,11 @@
     color: blue;}
 
 .hand {cursor:pointer; margin-right:50px;}
+.homelink {
+    font-size: 40px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: #343a40!important;
+}
+
