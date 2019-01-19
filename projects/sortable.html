@@ -18,7 +18,13 @@
 
     <div class="container mt-5 pt-5 ml-3">
         <div class="container">
-            <button class="btn btn-outline-info btn-lg d-md-inline d-block my-1" onclick="w3.sortHTML('#id01', 'li','a')">Sort by left</button>
+            <button class="btn btn-outline-info btn-lg d-md-inline d-block my-1" onclick="sortByLeft(this);">Sort by left</button>
+            <script>
+                function sortByLeft(element) {
+                    w3.sortHTML('#id01', 'li', 'a');
+                    element.classList.toggle('btn-outline-danger')
+                }
+            </script>
             <button class="btn btn-outline-info btn-lg d-md-inline d-block my-1 ml-md-2" onclick="w3.sortHTML('#id01', 'li','span')">Sort by right</button>
             <button class="btn btn-outline-info btn-lg d-md-inline d-block my-1 ml-md-2" onclick="w3.hide('span')">Hide Spans</button>
             <button class="btn btn-outline-info btn-lg d-md-inline d-block my-1 ml-md-2" onclick="w3.show('span')">Show Spans</button>
