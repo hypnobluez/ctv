@@ -1,0 +1,300 @@
+@import 'node_modules/bootstrap/scss/_functions.scss';
+@import 'node_modules/bootstrap/scss/_variables.scss';
+@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss';
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+$bg-xs: #00cccc;
+$bg-sm: #00b3b3;
+$bg-md: #009999;
+$bg-lg: #008080;
+$bg-xl: #006666;
+body {
+    @include media-breakpoint-only(xs) {
+        background: $bg-xs;
+
+    }
+    
+    @include media-breakpoint-up(sm) {background: $bg-sm}
+    @include media-breakpoint-up(md) {background:  $bg-md }
+    @include media-breakpoint-up(lg) { background: $bg-lg}
+    @include media-breakpoint-up(xl) { background: $bg-xl }
+}
+
+//CV STYLES START
+.resume-body {
+    #w {
+        margin: 0px 50px 0px 80px;
+        padding: 20px 40px 20px 40px;;
+        padding-top: 35px;
+        background: #fff;
+        min-width: 260px;
+        max-width: 900px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+        -webkit-border-bottom-right-radius: 8px;
+        -moz-border-radius-bottomleft: 8px;
+        -moz-border-radius-bottomright: 8px;
+        .position {
+            cursor:pointer;
+        }
+        .company {
+            padding-left:15px; 
+            padding-top:10px;}
+        .custom-bullet li {
+            display: block;
+        }
+        .custom-bullet li:before {
+            content: "\f105"; 
+            font-family: 'FontAwesome'; 
+            font-size: 12px; 
+            float: left;
+            margin-left: -17px;
+            color: blue;
+        }
+        .hand {
+            cursor: pointer; 
+            margin-right:50px;
+        }
+        h1 {
+          font-family: "Simonetta", "Trebuchet MS", Arial, sans-serif;
+          color: #454545;
+          font-size: 3.6em;
+          margin-bottom: 6px;
+        }
+        h2 {
+          font-family: "Simonetta", "Trebuchet MS", Arial, sans-serif;
+          color: #484848;
+          font-size: 2.5em;
+          margin-bottom: 10px;
+          text-decoration: underline;
+        }
+        h3 {
+          font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+          color: #777;
+          font-weight: normal;
+          font-size: 1.8em;
+          margin-bottom: 10px;
+        }
+        h4 {
+          font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+          color: #656565;
+          margin-bottom: 4px;
+        }
+        p {
+          color: #565656;
+          line-height: 1.4em;
+          margin-bottom: 15px;
+          padding-left: 25px;
+        }
+        h5 {
+          font-family: "Balthazar", "Droid Serif", serif;
+          color: #565656;
+          line-height: 1.2em;
+          margin-bottom: 0px;
+          padding-left: 25px;
+          font-weight: normal;
+        }
+        ul {
+          display: block;
+          list-style: none;
+          li {
+            list-style-type: none;
+            vertical-align: top;
+            margin-bottom: 5px;
+            color: #666;
+            line-height: 2.3em;
+          }
+        }
+        img {
+          border: 0;
+          max-width: 100%;
+        }
+        a {
+          color: #5582d6;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        header {
+          width: 100%;
+        }
+      }
+      
+      #info {
+        float: left;
+        margin-bottom: 12px;
+      }
+      
+      #photo {
+        float: right;
+        img {
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          background-color: #fff;
+          border: 1px solid #ccc;
+          padding: 5px;
+        }
+      }
+      
+      #skills-left {
+        display: block;
+        float: left;
+        margin-right: 30px;
+        margin-bottom: -5px;
+      }
+      
+      #skills-right {
+        display: block;
+        float: left;
+      }
+      
+      #tech {
+        display: none;
+      }
+      
+      #w .clearfix {
+        &:after {
+          content: ".";
+          display: block;
+          clear: both;
+          visibility: hidden;
+          line-height: 0;
+          height: 0;
+        }
+        display: inline-block;
+      }
+      
+      //CV responsiveness
+      @media only screen and (max-width: 740px) {
+        h1 {
+          font-size: 4.5em;
+        }
+        h3 {
+          font-size: 2.2em;
+        }
+        h2 {
+          display: block;
+        }
+        #info, #photo {
+          float: none;
+          display: block;
+        }
+        #w {
+          padding: 20px 15px;
+        }
+        p, h5 {
+          padding: 0;
+        }
+        h6 {
+          padding: 0 !important;
+        }
+      }
+      
+      @media only screen and (max-width: 570px) {
+        ul li {
+          width: 220px;
+        }
+        #skills {
+          display: none !important;
+        }
+        #tech {
+          display: block !important;
+        }
+        #skills-right {
+          margin-bottom: 15px;
+        }
+        #skills-left {
+          padding-bottom: -2px;
+          margin-bottom: -2px;
+        }
+      }
+      
+      @media only screen and (max-width: 480px) {
+        ul li {
+          width: 220px;
+        }
+        #w {
+          margin: 0px 20px 0px 50px;
+        }
+        #skills {
+          display: none !important;
+        }
+        #tech {
+          display: block !important;
+        }
+        #skills-left {
+          padding-bottom: -2px;
+          margin-bottom: -2px;
+        }
+      }
+      
+      @media only screen and (max-width: 320px) {
+        #w {
+          margin: 0px 10px 0px 10px;
+          #info {
+              h1 {
+                  margin-left: 25px;
+              }
+          }
+        }
+        #photo, #articles, #profile {
+          display: none;
+        }
+        #skills {
+          display: none !important;
+        }
+        #tech {
+          display: block !important;
+        }
+        body {
+          background: #fff;
+        }
+        #skills-left {
+          padding-bottom: -2px;
+          margin-bottom: -2px;
+        }
+      }
+      
+      /** iPhone only **/
+      @media screen and (max-width: 480px) {
+        ul li {
+          width: 220px;
+        }
+
+      }
+}
+//CV STYLES END
+
+//NAVIGATION START
+.homelink {
+    font-size: 40px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: #343a40!important;
+}
+//NAVIGATION END
+
+//BOOT4 START
+.boot4 {
+    background: #ffffff;
+  }
+//BOOT4 END

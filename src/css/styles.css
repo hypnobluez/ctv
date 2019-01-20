@@ -1,0 +1,207 @@
+@media (max-width: 575.98px) {
+  body {
+    background: #00cccc; } }
+
+@media (min-width: 576px) {
+  body {
+    background: #00b3b3; } }
+
+@media (min-width: 768px) {
+  body {
+    background: #009999; } }
+
+@media (min-width: 992px) {
+  body {
+    background: #008080; } }
+
+@media (min-width: 1200px) {
+  body {
+    background: #006666; } }
+
+.resume-body {
+  /** iPhone only **/ }
+  .resume-body #w {
+    margin: 0px 50px 0px 80px;
+    padding: 20px 40px 20px 40px;
+    padding-top: 35px;
+    background: #fff;
+    min-width: 260px;
+    max-width: 900px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px; }
+    .resume-body #w .position {
+      cursor: pointer; }
+    .resume-body #w .company {
+      padding-left: 15px;
+      padding-top: 10px; }
+    .resume-body #w .custom-bullet li {
+      display: block; }
+    .resume-body #w .custom-bullet li:before {
+      content: "\f105";
+      font-family: 'FontAwesome';
+      font-size: 12px;
+      float: left;
+      margin-left: -17px;
+      color: blue; }
+    .resume-body #w .hand {
+      cursor: pointer;
+      margin-right: 50px; }
+    .resume-body #w h1 {
+      font-family: "Simonetta", "Trebuchet MS", Arial, sans-serif;
+      color: #454545;
+      font-size: 3.6em;
+      margin-bottom: 6px; }
+    .resume-body #w h2 {
+      font-family: "Simonetta", "Trebuchet MS", Arial, sans-serif;
+      color: #484848;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-decoration: underline; }
+    .resume-body #w h3 {
+      font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+      color: #777;
+      font-weight: normal;
+      font-size: 1.8em;
+      margin-bottom: 10px; }
+    .resume-body #w h4 {
+      font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+      color: #656565;
+      margin-bottom: 4px; }
+    .resume-body #w p {
+      color: #565656;
+      line-height: 1.4em;
+      margin-bottom: 15px;
+      padding-left: 25px; }
+    .resume-body #w h5 {
+      font-family: "Balthazar", "Droid Serif", serif;
+      color: #565656;
+      line-height: 1.2em;
+      margin-bottom: 0px;
+      padding-left: 25px;
+      font-weight: normal; }
+    .resume-body #w ul {
+      display: block;
+      list-style: none; }
+      .resume-body #w ul li {
+        list-style-type: none;
+        vertical-align: top;
+        margin-bottom: 5px;
+        color: #666;
+        line-height: 2.3em; }
+    .resume-body #w img {
+      border: 0;
+      max-width: 100%; }
+    .resume-body #w a {
+      color: #5582d6;
+      text-decoration: none; }
+      .resume-body #w a:hover {
+        text-decoration: underline; }
+    .resume-body #w header {
+      width: 100%; }
+  .resume-body #info {
+    float: left;
+    margin-bottom: 12px; }
+  .resume-body #photo {
+    float: right; }
+    .resume-body #photo img {
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px; }
+  .resume-body #skills-left {
+    display: block;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: -5px; }
+  .resume-body #skills-right {
+    display: block;
+    float: left; }
+  .resume-body #tech {
+    display: none; }
+  .resume-body #w .clearfix {
+    display: inline-block; }
+    .resume-body #w .clearfix:after {
+      content: ".";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0; }
+  @media only screen and (max-width: 740px) {
+    .resume-body h1 {
+      font-size: 4.5em; }
+    .resume-body h3 {
+      font-size: 2.2em; }
+    .resume-body h2 {
+      display: block; }
+    .resume-body #info, .resume-body #photo {
+      float: none;
+      display: block; }
+    .resume-body #w {
+      padding: 20px 15px; }
+    .resume-body p, .resume-body h5 {
+      padding: 0; }
+    .resume-body h6 {
+      padding: 0 !important; } }
+  @media only screen and (max-width: 570px) {
+    .resume-body ul li {
+      width: 220px; }
+    .resume-body #skills {
+      display: none !important; }
+    .resume-body #tech {
+      display: block !important; }
+    .resume-body #skills-right {
+      margin-bottom: 15px; }
+    .resume-body #skills-left {
+      padding-bottom: -2px;
+      margin-bottom: -2px; } }
+  @media only screen and (max-width: 480px) {
+    .resume-body ul li {
+      width: 220px; }
+    .resume-body #w {
+      margin: 0px 20px 0px 50px; }
+    .resume-body #skills {
+      display: none !important; }
+    .resume-body #tech {
+      display: block !important; }
+    .resume-body #skills-left {
+      padding-bottom: -2px;
+      margin-bottom: -2px; } }
+  @media only screen and (max-width: 320px) {
+    .resume-body #w {
+      margin: 0px 10px 0px 10px; }
+      .resume-body #w #info h1 {
+        margin-left: 25px; }
+    .resume-body #photo, .resume-body #articles, .resume-body #profile {
+      display: none; }
+    .resume-body #skills {
+      display: none !important; }
+    .resume-body #tech {
+      display: block !important; }
+    .resume-body body {
+      background: #fff; }
+    .resume-body #skills-left {
+      padding-bottom: -2px;
+      margin-bottom: -2px; } }
+  @media screen and (max-width: 480px) {
+    .resume-body ul li {
+      width: 220px; } }
+
+.homelink {
+  font-size: 40px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: #343a40 !important; }
+
+.boot4 {
+  background: #ffffff; }
