@@ -7,14 +7,18 @@
     "start": "gulp",
     "dev": "gulp"
   },
-  "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0",
-    "gulp-sass": "^4.0.2"
-  },
   "dependencies": {
-    "bootstrap": "^4.2.1",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.6"
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "jquery": "latest",
+    "popper.js": "latest"
+  },
+  "devDependencies": {
+    "browser-sync": "latest",
+    "del": "latest",
+    "gulp": "latest",
+    "gulp-sass": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-rename": "latest"
   }
 }
