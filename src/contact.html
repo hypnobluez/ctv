@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CTV Website</title>
+  <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.min.css" rel="stylesheet">
+  <link rel="icon" href="favicon.ico">
+
+</head>
+
+<body>
+  <div w3-include-html="nav.html"></div>
+  <div class="container contact-form">
+
+    <form method="post" netlify>
+      <h3>Drop Us a Message</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+          </div>
+          <div class="form-group">
+            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+          </div>
+          <div class="form-group">
+            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+          </div>
+          <div class="form-group">
+            <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/w3.js"></script>
+  <script>
+    w3.includeHTML();
+    function fillHTML(elid, htmlContent) {
+      document.getElementById(elid).setAttribute('w3-include-html', htmlContent);
+      w3.includeHTML();
+    }
+  </script>
+
+</body>
+
+</html>
