@@ -15,11 +15,11 @@ $grid-breakpoints: (
   xl: 1200px
 );
 
-$bg-xs: #00cccc;
-$bg-sm: #00b3b3;
-$bg-md: #009999;
-$bg-lg: #008080;
-$bg-xl: #006666;
+$bg-xs: #ffffff;
+$bg-sm: #ffffff;
+$bg-md: #ffffff;
+$bg-lg: #ffffff;
+$bg-xl: #ffffff;
 body {
     @include media-breakpoint-only(xs) {
         background: $bg-xs;
