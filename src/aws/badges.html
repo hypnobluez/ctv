@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8" /></label>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /></label>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" /></label>
     <title>AWS Badges</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" /></label>
+    <style>
+    [id^="badge-"] {
+  display: none;
+}
+
+
+.spinBadge {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -ms-transition-property: -ms-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+}
+
+[id^="badge-"]:checked + label img.spinBadge {
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+    </style>
   </head>
 
   <body>
     <div class="container mt-4">
       <div class="row">
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/9" />
+          <input type="checkbox" id="badge-1"><label for="badge-1"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/9" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/2" />
+          <input type="checkbox" id="badge-2"><label for="badge-2"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/2" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/1" />
+          <input type="checkbox" id="badge-3"><label for="badge-3"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/1" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/3" />
+          <input type="checkbox" id="badge-4"><label for="badge-4"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/3" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/5" />
+          <input type="checkbox" id="badge-5"><label for="badge-5"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/5" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/4" />
+          <input type="checkbox" id="badge-6"><label for="badge-6"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/4" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/8" />
+          <input type="checkbox" id="badge-7"><label for="badge-7"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/8" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/10" />
+          <input type="checkbox" id="badge-8"><label for="badge-8"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/10" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/6" />
+          <input type="checkbox" id="badge-9"><label for="badge-9"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/6" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/7" />
+          <input type="checkbox" id="badge-10"><label for="badge-10"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/7" /></label>
         </div>
         <div class="col-12 col-sm-6 col-md-4 my-2">
-          <img class="img-fluid" src="https://www.certmetrics.com/api/ob/image/amazon/c/11" />
+          <input type="checkbox" id="badge-11"><label for="badge-11"><img class="img-fluid spinBadge" src="https://www.certmetrics.com/api/ob/image/amazon/c/11" /></label>
         </div>
       </div>
     </div>
