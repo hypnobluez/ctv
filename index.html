@@ -264,6 +264,12 @@ button.person:hover b { color: var(--accent); }
 .note { font-size: 12px; color: var(--faint); margin: 20px 0 0; }
 .note a, .note button { color: var(--muted); }
 .note button { border: 0; background: none; padding: 0; font-size: inherit; text-decoration: underline; }
+/* Phone-only top bar for the detail sheet; on larger screens the floating × and the in-page Back pill are used. */
+.sheet-bar { display: none; }
+.sheet-button { display: grid; place-items: center; flex: none; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--text); }
+.sheet-button:hover, .sheet-button:active { background: var(--surface-hover); }
+.sheet-button .icon { width: 20px; height: 20px; stroke-width: 1.8; }
+.sheet-title { flex: 1; min-width: 0; font-size: 15px; font-weight: 600; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .close { position: absolute; top: 12px; right: 12px; z-index: 3; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: color-mix(in srgb, var(--surface) 85%, transparent); color: var(--muted); }
 .close:hover { color: var(--text); border-color: var(--line-strong); }
 #settings { width: min(460px, calc(100% - 32px)); }
@@ -323,7 +329,13 @@ footer a:hover, footer button:hover { color: var(--accent); }
   .card-text h3 { font-size: 13px; }
   .to-top { right: 16px; bottom: 16px; }
   dialog { width: calc(100% - 16px); max-height: calc(100dvh - 16px); }
-  .detail-body { max-height: calc(100dvh - 18px); }
+  /* On phones the detail opens as a full-screen sheet with a fixed top bar, like a native app. */
+  #detail { width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; inset: 0; border: 0; border-radius: 0; box-shadow: none; }
+  #detail[open] { display: flex; flex-direction: column; }
+  #detail .sheet-bar { display: flex; align-items: center; gap: 4px; flex: none; height: 52px; padding: 0 6px; padding-top: env(safe-area-inset-top); box-sizing: content-box; background: var(--surface); border-bottom: 1px solid var(--line); }
+  #detail .detail-body { flex: 1; min-height: 0; max-height: none; padding-bottom: env(safe-area-inset-bottom); }
+  #detail > .close, #detail .detail-info > .back { display: none; }
+  .episodes .section-head, .credit-tools { padding-right: 4px; }
   dialog h2 { font-size: 27px; }
   .cast { grid-template-columns: minmax(0, 1fr); }
   .ep-row { grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; }
@@ -431,8 +443,13 @@ footer a:hover, footer button:hover { color: var(--accent); }
 <input type="file" id="import-file" accept="application/json,.json" hidden>
 
 <dialog id="detail" aria-labelledby="detail-title">
-  <button class="close" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  <div class="sheet-bar">
+    <button class="sheet-button" id="sheet-back" data-back aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+    <span class="sheet-title" id="sheet-title" aria-hidden="true"></span>
+    <button class="sheet-button" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
   <div class="detail-body" id="detail-body" tabindex="-1"></div>
+  <button class="close" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
 </dialog>
 <dialog id="settings" aria-labelledby="settings-title">
   <form class="settings-body" id="settings-form">
@@ -1147,14 +1164,14 @@ function renderPerson(item, extra) {
 </div>`;
   renderCredits();
 }
-function openPerson(item, updateHash = true) {
+function openPerson(item, mode = 'auto') {
   const version = ++detailVersion;
   ++seasonVersion;
   selected = item;
   creditView = { kind: 'all', sort: 'new' };
   recordView(item);
   renderPerson(item, apiKey ? null : { error: 'Add your TMDB API key in API settings to see filmographies.' });
-  presentDialog(item, updateHash);
+  presentDialog(item, mode);
   if (!apiKey) return;
   fetchPerson(item.id).then(({ data }) => {
     if (version !== detailVersion) return;
@@ -1172,18 +1189,46 @@ function openPerson(item, updateHash = true) {
 // Moving from a title to an actor to another title inside the dialog keeps a trail, so Back retraces it.
 let trail = [];
 const backButton = () => trail.length ? `<button class="back" data-back>${icon('back')}<span>${esc(trail[trail.length - 1].title)}</span></button>` : '';
-const openItem = (item, updateHash = true) => item.type === 'person' ? openPerson(item, updateHash) : openDetail(item, updateHash);
-function presentDialog(item, updateHash) {
+// How an open changes the address bar: 'push' adds a history entry (so the phone's back gesture retraces it),
+// 'replace' swaps the current one, false leaves it alone. 'auto' pushes when the dialog is first opened.
+const openItem = (item, mode = 'auto') => item.type === 'person' ? openPerson(item, mode) : openDetail(item, mode);
+// History entries pushed while the dialog is open; closing it unwinds them.
+let dialogDepth = 0;
+function presentDialog(item, mode) {
   const dialog = $('detail');
+  if (mode === 'auto') mode = dialog.open ? 'replace' : 'push';
   if (!dialog.open) {
     returnFocus = document.activeElement;
     dialog.showModal();
+    detailOpen = true;
   }
   // Focus goes to the scrolling body so the keyboard (arrows, Page Down, space) scrolls it straight away.
   $('detail-body').focus({ preventScroll: true });
   $('detail-body').scrollTop = 0;
-  if (updateHash) history.replaceState(null, '', location.pathname + location.search + `#${item.type}=${item.id}`);
+  $('sheet-title').textContent = item.title;
+  $('sheet-back').setAttribute('aria-label', trail.length ? `Back to ${trail[trail.length - 1].title}` : 'Close');
+  const url = location.pathname + location.search + `#${item.type}=${item.id}`;
+  if (mode === 'push') {
+    history.pushState(null, '', url);
+    dialogDepth++;
+  } else if (mode) {
+    history.replaceState(null, '', url);
+  }
 }
+function goBack() {
+  if (dialogDepth > 0) return history.back();
+  const previous = trail.pop();
+  if (previous) openItem(previous, 'replace');
+  else closeDetail();
+}
+addEventListener('popstate', () => {
+  const dialog = $('detail');
+  if (!dialog.open || dialogDepth === 0) return;
+  dialogDepth--;
+  const previous = trail.pop();
+  if (previous) openItem(previous, false);
+  else closeDetail();
+});
 function recsSection(d) {
   if (!d.recs.length) return '';
   return `<section><h3 class="section-title">More like this</h3><div class="recs">${d.recs.map(r => {
@@ -1352,13 +1397,13 @@ function renderDetail(item, extra) {
   const season = $('season-select');
   if (season) showSeason(item, Number(season.dataset.season));
 }
-function openDetail(item, updateHash = true) {
+function openDetail(item, mode = 'auto') {
   const version = ++detailVersion;
   ++seasonVersion;
   selected = item;
   recordView(item);
   renderDetail(item, apiKey ? null : { error: 'Add your TMDB API key in API settings to see where to watch, the cast and more.' });
-  presentDialog(item, updateHash);
+  presentDialog(item, mode);
   if (!apiKey) return;
   fetchDetail(item.type, item.id).then(({ data }) => {
     if (version !== detailVersion) return;
@@ -1377,12 +1422,14 @@ function step(delta) {
   const i = list.findIndex(x => selected && keyOf(x) === keyOf(selected));
   if (i < 0 || !list[i + delta]) return;
   trail = [];
-  openItem(list[i + delta]);
+  openItem(list[i + delta], 'replace');
 }
 async function readHash() {
   const match = location.hash.match(/^#(movie|tv|person)=(\d+)$/);
   if (!match) return;
   const [, type, id] = match;
+  // Back and forward inside the dialog are handled by popstate; this is for links and typed URLs.
+  if ($('detail').open && selected && keyOf(selected) === `${type}:${id}`) return;
   let item = findItem(`${type}:${id}`);
   if (!item && apiKey) {
     try { item = (await (type === 'person' ? fetchPerson(Number(id)) : fetchDetail(type, Number(id)))).data; } catch {}
@@ -1666,8 +1713,7 @@ document.addEventListener('click', async e => {
     creditView.kind = t.closest('[data-credit-kind]').dataset.creditKind;
     renderCredits();
   } else if (t.closest('[data-back]')) {
-    const previous = trail.pop();
-    if (previous) openItem(previous);
+    goBack();
   } else if (t.closest('[data-more-reviews]')) {
     const button = t.closest('[data-more-reviews]');
     button.previousElementSibling.hidden = false;
@@ -1688,29 +1734,45 @@ document.addEventListener('click', async e => {
   } else if (t.closest('[data-open]')) {
     const item = findItem(t.closest('[data-open]').dataset.open);
     if (!item) return;
-    if (t.closest('#detail') && selected) trail.push(selected);
-    else {
+    if (t.closest('#detail') && selected) {
+      trail.push(selected);
+      openItem(item, 'push');
+    } else {
       trail = [];
       if (state.view === 'browse' && state.query) rememberSearch(state.query);
+      openItem(item);
     }
-    openItem(item);
   } else if (t.closest('[data-copy]')) {
     try { await navigator.clipboard.writeText(location.href); notify('Link copied.'); }
     catch { notify('Copy the link from your address bar.'); }
   } else if (t.closest('[data-close]') || t.tagName === 'DIALOG') {
     // A click on the dialog element itself is a click on the backdrop.
-    t.closest('dialog').close();
+    const dialog = t.closest('dialog');
+    dialog.id === 'detail' ? closeDetail() : dialog.close();
   }
 });
-$('detail').addEventListener('close', () => {
+// Cleanup runs straight away when the page closes the dialog itself, and from the close event for Esc;
+// detailOpen makes the second call a no-op.
+let detailOpen = false;
+function closeDetail() {
+  if ($('detail').open) $('detail').close();
+  detailClosed();
+}
+$('detail').addEventListener('close', detailClosed);
+function detailClosed() {
+  if (!detailOpen) return;
+  detailOpen = false;
   selected = null;
   personData = null;
   trail = [];
   ++detailVersion;
   if (state.view === 'history') renderAll();
-  if (/^#(movie|tv|person)=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+  // Closed with ×, Esc or the backdrop: step back past the entries the dialog pushed, so browser Back doesn't reopen it.
+  if (dialogDepth > 0) history.go(-dialogDepth);
+  else if (/^#(movie|tv|person)=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+  dialogDepth = 0;
   if (returnFocus?.isConnected) returnFocus.focus();
-});
+}
 $('settings-button').addEventListener('click', openSettings);
 $('settings-form').addEventListener('submit', e => {
   e.preventDefault();
