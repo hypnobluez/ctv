@@ -87,7 +87,7 @@ main { padding-bottom: 64px; }
 .poster:focus-visible { outline-offset: -3px; }
 .poster img { position: absolute; inset: 0; z-index: 1; display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .card:hover .poster img { transform: scale(1.03); }
-.poster.broken img { visibility: hidden; }
+.broken img { visibility: hidden; }
 .placeholder { position: absolute; inset: 0; display: grid; place-items: center; padding: 18px; font: 17px/1.25 var(--serif); color: var(--muted); text-align: center; text-wrap: balance; }
 .score { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 2px 8px; border-radius: 999px; background: #000b; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); color: #fff; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .score::before { content: "★ "; color: var(--accent); }
@@ -166,6 +166,42 @@ dialog h2 { font: 400 34px/1.12 var(--serif); letter-spacing: -.01em; margin: 12
 .rec .poster { border-radius: 8px; }
 .rec .placeholder { font-size: 12px; padding: 8px; }
 .rec > span:last-child { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.episodes, .reviews { margin: 0 0 26px; }
+.episodes .section-head { align-items: center; margin-bottom: 10px; }
+.episodes .section-title { margin: 0; }
+.episodes select { max-width: 240px; padding: 6px 30px 6px 12px; font-size: 13px; border-radius: 10px; background-color: var(--bg); background-position: right 10px center; }
+.season-meta { margin: 0 0 6px; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ep-list { margin: 0; padding: 0; list-style: none; }
+.episode { border-top: 1px solid var(--line); }
+.ep-row { display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; gap: 14px; align-items: start; width: 100%; padding: 12px 0; border: 0; background: none; text-align: left; }
+.ep-row:hover .ep-main b { color: var(--accent); }
+.ep-still { position: relative; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: var(--surface-hover); }
+.ep-still img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+.ep-still .placeholder { font-size: 13px; padding: 4px; }
+.ep-main { min-width: 0; }
+.ep-main b { display: block; font-size: 14px; font-weight: 500; line-height: 1.35; transition: color .15s; }
+.ep-main small { display: block; margin-top: 1px; font-size: 12.5px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.ep-overview { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 4px; font-size: 13px; color: var(--muted); }
+.episode.open .ep-overview { display: block; }
+.ep-score { font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ep-score::before { content: "★ "; color: var(--accent); }
+.episode.upcoming .ep-main b { color: var(--muted); }
+.soon { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); vertical-align: 1px; }
+.ep-links { display: none; flex-wrap: wrap; gap: 6px 18px; padding: 0 0 14px 146px; }
+.episode.open .ep-links { display: flex; }
+.reviews .muted { margin: 0; font-size: 14px; color: var(--muted); }
+.review { padding: 14px 0; border-top: 1px solid var(--line); }
+.review-head { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.review-head .avatar { width: 28px; height: 28px; font-size: 12px; }
+.review-head b { font-weight: 500; }
+.review-head small { color: var(--faint); }
+.review-rating { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+.review-rating::before { content: "★ "; color: var(--accent); }
+.review-body { position: relative; margin-top: 8px; font-size: 14px; overflow-wrap: anywhere; }
+.review-body p { margin: 0 0 8px; }
+.review.long:not(.open) .review-body { max-height: 7.6em; overflow: hidden; }
+.review.long:not(.open) .review-body::after { content: ""; position: absolute; inset: auto 0 0; height: 3em; background: linear-gradient(transparent, var(--surface)); }
+.review-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 0; font-size: 13px; color: var(--faint); }
 .loading-block { display: grid; gap: 10px; margin: 24px 0; }
 .loading-block .skeleton { height: 14px; border-radius: 7px; }
 .note { font-size: 12px; color: var(--faint); margin: 20px 0 0; }
@@ -232,6 +268,8 @@ footer a:hover, footer button:hover { color: var(--accent); }
   .detail-body { max-height: calc(100dvh - 18px); }
   dialog h2 { font-size: 27px; }
   .cast { grid-template-columns: minmax(0, 1fr); }
+  .ep-row { grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; }
+  .ep-links { padding-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
@@ -243,7 +281,8 @@ footer a:hover, footer button:hover { color: var(--accent); }
   <symbol id="i-search" viewBox="0 0 20 20"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></symbol>
   <symbol id="i-bookmark" viewBox="0 0 20 20"><path d="M5 3.5h10v14l-5-3.5-5 3.5z"/></symbol>
   <symbol id="i-check" viewBox="0 0 20 20"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></symbol>
-  <symbol id="i-play" viewBox="0 0 20 20"><path d="M7 5.5v9l7-4.5z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.5 2"/></symbol>
+  <symbol id="i-play"viewBox="0 0 20 20"><path d="M7 5.5v9l7-4.5z"/></symbol>
   <symbol id="i-shuffle" viewBox="0 0 20 20"><path d="M3 5h3l8 10h3m-3-3 3 3-3 3M3 15h3l3-4m2-2 3-4h3m-3-3 3 3-3 3"/></symbol>
   <symbol id="i-close" viewBox="0 0 20 20"><path d="m5 5 10 10M5 15 15 5"/></symbol>
   <symbol id="i-up" viewBox="0 0 20 20"><path d="M10 16V4m-5 5 5-5 5 5"/></symbol>
@@ -293,10 +332,12 @@ footer a:hover, footer button:hover { color: var(--accent); }
         <span class="chip-divider" aria-hidden="true"></span>
         <button class="chip shelf-chip" data-view="want" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"/></svg>Watchlist<span class="n" id="want-count">0</span></button>
         <button class="chip shelf-chip" data-view="watched" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Watched<span class="n" id="watched-count">0</span></button>
+        <button class="chip shelf-chip" data-view="history" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>History<span class="n" id="history-count">0</span></button>
       </div>
       <div class="meta">
         <span id="count" role="status" aria-live="polite"></span>
         <button class="link-button" data-action="clear" hidden>Clear filters</button>
+        <button class="link-button" data-action="clear-history" hidden>Clear history</button>
       </div>
     </div>
   </div>
@@ -359,13 +400,15 @@ const DEFAULTS = { query: '', type: 'movie', list: 'trending', genre: '', servic
 const LISTS = { trending: 'trending this week', popular: 'popular right now', top: 'top rated of all time', new: 'released in the last six months' };
 const REGIONS = { AU: 'Australia', NZ: 'New Zealand', GB: 'the UK', IE: 'Ireland', US: 'the US', CA: 'Canada' };
 const APPEND = {
-  movie: 'credits,videos,watch/providers,external_ids,recommendations,release_dates',
-  tv: 'credits,videos,watch/providers,external_ids,recommendations,content_ratings',
+  movie: 'credits,videos,watch/providers,external_ids,recommendations,release_dates,reviews',
+  tv: 'credits,videos,watch/providers,external_ids,recommendations,content_ratings,reviews',
 };
 const SHELF_KEY = 'reel-shelf';
 const API_KEY_KEY = 'reel-key';
 const REGION_KEY = 'reel-region';
 const CACHE_PREFIX = 'reel-cache:';
+const HISTORY_KEY = 'reel-history';
+const HISTORY_MAX = 200;
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const fullNumber = new Intl.NumberFormat('en');
@@ -418,6 +461,11 @@ let region = read(REGION_KEY, 'AU');
 if (!Object.hasOwn(REGIONS, region)) region = 'AU';
 let shelf = read(SHELF_KEY, []);
 shelf = Array.isArray(shelf) ? shelf.filter(isStored).map(toEntry) : [];
+// History keeps the season you last looked at for each show, so it reopens there.
+const isViewed = x => x && Number.isInteger(x.id) && (x.type === 'movie' || x.type === 'tv') && typeof x.title === 'string';
+const toViewed = x => ({ ...pick(x), at: Number(x.at) || 0, ...(Number.isInteger(x.season) ? { season: x.season } : {}) });
+const readViewed = () => { const list = read(HISTORY_KEY, []); return Array.isArray(list) ? list.filter(isViewed).map(toViewed) : []; };
+let viewed = readViewed();
 
 const params = new URLSearchParams(location.search);
 const idParam = name => /^\d+$/.test(params.get(name) || '') ? params.get(name) : '';
@@ -446,6 +494,9 @@ const known = new Map();
 let controller;
 let requestVersion = 0;
 let detailVersion = 0;
+let seasonVersion = 0;
+// The history grid is drawn from a snapshot, so opening a title doesn't reorder the list being stepped through.
+let viewedShown = [];
 let selected = null;
 let returnFocus = null;
 let toastTimer;
@@ -471,8 +522,8 @@ function errorText(error) {
 const entryOf = key => shelf.find(x => keyOf(x) === key);
 const statusOf = item => entryOf(keyOf(item))?.status || null;
 const countOf = status => shelf.filter(x => x.status === status).length;
-const currentList = () => state.view === 'browse' ? state.items : shelf.filter(x => x.status === state.view);
-const findItem = key => known.get(key) || entryOf(key) || (selected && keyOf(selected) === key ? selected : null);
+const currentList = () => state.view === 'browse' ? state.items : state.view === 'history' ? viewedShown : shelf.filter(x => x.status === state.view);
+const findItem = key => known.get(key) || entryOf(key) || viewed.find(x => keyOf(x) === key) || (selected && keyOf(selected) === key ? selected : null);
 const isFiltered = () => Object.keys(DEFAULTS).some(k => k !== 'type' && state[k] !== DEFAULTS[k]);
 
 /* TMDB */
@@ -568,7 +619,7 @@ function posterHTML(item, size) {
   const src = imgURL(size, item.poster);
   return `${src ? `<img src="${esc(src)}" alt="" loading="lazy" decoding="async">` : ''}<span class="placeholder" aria-hidden="true">${esc(item.title)}</span>`;
 }
-function card(item) {
+function card(item, note = '') {
   const key = keyOf(item);
   known.set(key, item);
   const year = yearOf(item.date);
@@ -578,14 +629,15 @@ ${posterHTML(item, 'w342')}
 ${item.votes ? `<span class="score">${item.rating.toFixed(1)}</span>` : ''}
 <span class="seen">${icon('check')}Watched</span>
 </button>
-<div class="card-foot"><div class="card-text"><h3>${esc(item.title)}</h3><p>${[year, item.type === 'tv' ? 'TV' : 'Movie'].filter(Boolean).join(' · ')}</p></div>${saveButton(item)}</div>
+<div class="card-foot"><div class="card-text"><h3>${esc(item.title)}</h3><p>${[year, item.type === 'tv' ? 'TV' : 'Movie', note].filter(Boolean).join(' · ')}</p></div>${saveButton(item)}</div>
 </article>`;
 }
 function renderAll() {
+  if (state.view === 'history') viewedShown = viewed.slice();
   const list = currentList();
   $('grid').innerHTML = state.view === 'browse' && state.loading && !list.length
     ? '<div class="skeleton-card" aria-hidden="true"><div class="skeleton poster-sk"></div><div class="skeleton line"></div><div class="skeleton line short"></div></div>'.repeat(12)
-    : list.map(card).join('');
+    : list.map(x => card(x, state.view === 'history' ? ago(x.at) : '')).join('');
   updateChrome();
   queueProgress();
 }
@@ -619,15 +671,18 @@ function updateChrome() {
   });
   $('want-count').textContent = countOf('want');
   $('watched-count').textContent = countOf('watched');
+  $('history-count').textContent = viewed.length;
   // Search covers movies and TV together, so the browse filters step aside while a query is active.
   $('type').disabled = !browse || !!state.query;
   $('genre').disabled = !browse || !!state.query || !genres[state.type].length;
   $('service').disabled = !browse || !!state.query || !providers[state.type].length;
   document.querySelector('.meta [data-action="clear"]').hidden = !browse || !isFiltered();
+  document.querySelector('.meta [data-action="clear-history"]').hidden = state.view !== 'history' || !viewed.length;
 
   const watchlist = `<strong>${countOf('want')}</strong> on your watchlist`;
   $('overview').innerHTML = state.view === 'want' ? `${watchlist} · kept in this browser`
     : state.view === 'watched' ? `<strong>${countOf('watched')}</strong> watched · kept in this browser`
+    : state.view === 'history' ? `<strong>${viewed.length}</strong> ${viewed.length === 1 ? 'title' : 'titles'} you’ve looked up · kept in this browser`
     : state.error === NO_KEY ? `Movies and TV, and where to stream them in ${REGIONS[region]} · ${watchlist}`
     : `<strong>${state.loading && !list.length ? '—' : full(state.total)}</strong> ${state.query ? `results for “${esc(state.query)}”` : describe()} · ${watchlist}`;
   $('count').textContent = browse ? (list.length ? `${full(list.length)} of ${full(state.total)}` : '') : plural(list.length, 'title');
@@ -637,6 +692,7 @@ function updateChrome() {
   if (!list.length && !state.loading) {
     if (state.view === 'want') showEmpty('Your watchlist is empty.', 'Tap the bookmark on anything you want to watch and it’ll be waiting here.', 'Browse titles', 'browse');
     else if (state.view === 'watched') showEmpty('Nothing watched yet.', 'Open a title and mark it watched to keep a record of everything you’ve seen.', 'Browse titles', 'browse');
+    else if (state.view === 'history') showEmpty('No history yet.', 'Every title you open is kept here, most recent first, so you can find it again.', 'Browse titles', 'browse');
     else if (state.error === NO_KEY) showEmpty('Connect to TMDB.', 'This page reads from The Movie Database. Add your free API key once and it’s saved in this browser.', 'Add API key', 'settings');
     else if (state.error) showEmpty('The projector jammed.', state.error, 'Try again', 'retry');
     else showEmpty('Nothing on screen.', 'No titles matched. Try a different title or loosen the filters.', 'Clear filters', 'clear');
@@ -697,7 +753,7 @@ async function load(append = false) {
     // TMDB serves at most 500 pages of any list.
     state.done = !data.results.length || state.page >= Math.min(data.pages, MAX_PAGE);
     state.loading = false;
-    if (append) $('grid').insertAdjacentHTML('beforeend', fresh.map(card).join(''));
+    if (append) $('grid').insertAdjacentHTML('beforeend', fresh.map(x => card(x)).join(''));
     else renderAll();
     updateChrome();
     setSync(cachedAt ? 'idle' : 'live', cachedAt ? `Cached · ${ago(cachedAt)}` : 'Live from TMDB');
@@ -795,9 +851,26 @@ function shapeDetail(d, type) {
     cert: String(cert),
     providers: { link: tmdbURL(where.link), stream: [...offers('flatrate'), ...offers('free'), ...offers('ads')], rent: offers('rent'), buy: offers('buy') },
     recs: (d.recommendations?.results || []).map(r => toItem(r, type)).filter(Boolean).slice(0, 12),
+    seasonList: (d.seasons || [])
+      .filter(s => Number.isInteger(s.season_number) && s.episode_count > 0)
+      .map(s => ({ n: s.season_number, name: String(s.name || `Season ${s.season_number}`), count: Number(s.episode_count) || 0, date: String(s.air_date || '') })),
+    reviews: (d.reviews?.results || []).slice(0, 6).map(r => ({
+      author: String(r.author_details?.name || r.author || r.author_details?.username || 'Anonymous'),
+      rating: Number(r.author_details?.rating) || 0,
+      date: String(r.created_at || '').slice(0, 10),
+      content: String(r.content || '').slice(0, 3000),
+    })),
+    reviewTotal: Number(d.reviews?.total_results) || 0,
   };
 }
-const fetchDetail = (type, id) => request(`/${type}/${id}`, { append_to_response: APPEND[type] }, { ttl: DAY, tag: region, shape: d => shapeDetail(d, type), signal: AbortSignal.timeout(15000) });
+const seasonShape = d => ({
+  episodes: (d.episodes || []).filter(e => Number.isInteger(e.episode_number)).map(e => ({
+    n: e.episode_number, name: String(e.name || `Episode ${e.episode_number}`), date: String(e.air_date || ''),
+    runtime: Number(e.runtime) || 0, still: String(e.still_path || ''),
+    rating: Number(e.vote_average) || 0, votes: Number(e.vote_count) || 0, overview: String(e.overview || ''),
+  })),
+});
+const fetchDetail = (type, id) => request(`/${type}/${id}`, { append_to_response: APPEND[type] }, { ttl: DAY, tag: `${region}:3`, shape: d => shapeDetail(d, type), signal: AbortSignal.timeout(15000) });
 
 function watchSection(d) {
   const seen = new Set();
@@ -844,6 +917,134 @@ function recsSection(d) {
     return `<button class="rec" data-open="${keyOf(r)}" aria-label="Open ${esc(r.title)}"><span class="poster">${posterHTML(r, 'w185')}</span><span>${esc(r.title)}</span></button>`;
   }).join('')}</div></section>`;
 }
+function seasonFor(item, d) {
+  const remembered = viewed.find(x => keyOf(x) === keyOf(item))?.season;
+  if (d.seasonList.some(s => s.n === remembered)) return remembered;
+  // Shows still running open on their latest aired season; finished ones start at the beginning.
+  const aired = d.seasonList.filter(s => s.n > 0 && s.date && s.date <= isoDay(0));
+  if (d.status === 'Returning Series' && aired.length) return aired[aired.length - 1].n;
+  return (d.seasonList.find(s => s.n > 0) || d.seasonList[0]).n;
+}
+function episodesSection(item, d) {
+  if (!d.seasonList.length) return '';
+  const current = seasonFor(item, d);
+  // Specials (season 0) go last.
+  const seasons = [...d.seasonList].sort((a, b) => (a.n || 999) - (b.n || 999));
+  return `<section class="episodes" aria-labelledby="episodes-title">
+<div class="section-head"><h3 class="section-title" id="episodes-title">Episodes</h3>
+<label class="sr-only" for="season-select">Season</label>
+<select id="season-select" data-season="${current}">${seasons.map(s => `<option value="${s.n}"${s.n === current ? ' selected' : ''}>${esc(s.name)} · ${s.count} ep</option>`).join('')}</select></div>
+<div id="episode-list"></div>
+</section>`;
+}
+async function showSeason(show, n) {
+  const version = ++seasonVersion;
+  const box = $('episode-list');
+  if (!box) return;
+  box.innerHTML = '<div class="loading-block" aria-hidden="true"><div class="skeleton"></div><div class="skeleton" style="width:70%"></div></div>';
+  try {
+    const { data } = await request(`/tv/${show.id}/season/${n}`, {}, { ttl: 12 * HOUR, shape: seasonShape, signal: AbortSignal.timeout(15000) });
+    if (version === seasonVersion && $('episode-list')) $('episode-list').innerHTML = episodesHTML(show, n, data);
+  } catch (error) {
+    if (version === seasonVersion && $('episode-list')) $('episode-list').innerHTML = `<p class="note">${esc(errorText(error))}</p>`;
+  }
+}
+function episodesHTML(show, s, data) {
+  if (!data.episodes.length) return '<p class="note">No episodes listed for this season yet.</p>';
+  const today = isoDay(0);
+  const rated = data.episodes.filter(e => e.votes && e.date && e.date <= today);
+  const average = rated.length ? rated.reduce((t, e) => t + e.rating, 0) / rated.length : 0;
+  const best = rated.reduce((b, e) => !b || e.rating > b.rating ? e : b, null);
+  const years = [...new Set(data.episodes.map(e => yearOf(e.date)).filter(Boolean))];
+  const meta = [
+    plural(data.episodes.length, 'episode'),
+    years.length > 1 ? `${years[0]}–${years.at(-1)}` : years[0],
+    average ? `average ★ ${average.toFixed(1)}` : '',
+    best && rated.length > 2 ? `best: ${best.n}. “${best.name}”` : '',
+  ].filter(Boolean);
+  return `<p class="season-meta">${meta.map(esc).join(' · ')}</p><ol class="ep-list">${data.episodes.map(e => episodeHTML(show, s, e, today)).join('')}</ol>`;
+}
+function episodeHTML(show, s, e, today) {
+  const upcoming = !e.date || e.date > today;
+  const code = `S${String(s).padStart(2, '0')}E${String(e.n).padStart(2, '0')}`;
+  const still = imgURL('w300', e.still);
+  const when = !e.date ? 'Date to be announced' : upcoming ? `Airs ${formatDate(e.date)}` : formatDate(e.date);
+  const reddit = `https://www.reddit.com/search/?q=${encodeURIComponent(`"${show.title}" ${code} discussion`)}`;
+  // Until the episode's own IMDb id is fetched, the IMDb link points at the show's episode guide.
+  const imdb = show.imdb ? `https://www.imdb.com/title/${show.imdb}/episodes/?season=${s}` : '';
+  const out = 'target="_blank" rel="noopener noreferrer"';
+  return `<li class="episode${upcoming ? ' upcoming' : ''}" data-ep="${s}:${e.n}">
+<button class="ep-row" data-episode aria-expanded="false">
+<span class="ep-still">${still ? `<img src="${esc(still)}" alt="" loading="lazy" decoding="async">` : ''}<span class="placeholder" aria-hidden="true">E${e.n}</span></span>
+<span class="ep-main"><b>${e.n}. ${esc(e.name)}${upcoming ? '<span class="soon">Upcoming</span>' : ''}</b><small>${[when, e.runtime ? runtime(e.runtime) : ''].filter(Boolean).map(esc).join(' · ')}</small>${e.overview ? `<span class="ep-overview">${esc(e.overview)}</span>` : ''}</span>
+${e.votes ? `<span class="ep-score" title="${full(e.votes)} votes on TMDB">${e.rating.toFixed(1)}</span>` : '<span></span>'}
+</button>
+<div class="ep-links">
+<a class="link-button" data-imdb-episode href="${esc(imdb)}" ${out}${imdb ? '' : ' hidden'}>IMDb reviews ↗</a>
+<a class="link-button" href="${esc(reddit)}" ${out}>Reddit discussion ↗</a>
+<a class="link-button" href="https://www.themoviedb.org/tv/${show.id}/season/${s}/episode/${e.n}" ${out}>TMDB ↗</a>
+</div>
+</li>`;
+}
+async function toggleEpisode(li) {
+  const open = li.classList.toggle('open');
+  li.querySelector('[data-episode]').setAttribute('aria-expanded', open);
+  const link = li.querySelector('[data-imdb-episode]');
+  if (!open || !selected || link.dataset.resolved) return;
+  link.dataset.resolved = '1';
+  const [s, e] = li.dataset.ep.split(':');
+  try {
+    const { data } = await request(`/tv/${selected.id}/season/${s}/episode/${e}/external_ids`, {}, { ttl: 7 * DAY, shape: d => ({ imdb: /^tt\d+$/.test(d.imdb_id || '') ? d.imdb_id : '' }), signal: AbortSignal.timeout(10000) });
+    if (data.imdb) {
+      link.href = `https://www.imdb.com/title/${data.imdb}/reviews/`;
+      link.hidden = false;
+    }
+  } catch {
+    link.dataset.resolved = '';
+  }
+}
+
+function reviewHTML(r) {
+  // Reviews arrive with a mix of Markdown and stray HTML; both are reduced to plain text.
+  const paragraphs = r.content.replace(/<\/?[a-z][^>]*>/gi, '').replace(/\*\*|__/g, '').split(/\r?\n\s*\r?\n/).map(p => p.trim()).filter(Boolean);
+  const long = r.content.length > 480 || paragraphs.length > 3;
+  const rating = Number.isInteger(r.rating) ? r.rating : r.rating.toFixed(1);
+  return `<article class="review${long ? ' long' : ''}">
+<div class="review-head"><span class="avatar" style="--hue:${hueOf(r.author)}" aria-hidden="true">${esc(r.author.charAt(0).toUpperCase())}</span><b>${esc(r.author)}</b><small>${formatDate(r.date)}</small>${r.rating ? `<span class="review-rating">${rating}/10</span>` : ''}</div>
+<div class="review-body">${paragraphs.map(p => `<p>${esc(p).replace(/\r?\n/g, '<br>')}</p>`).join('')}</div>
+${long ? '<button class="link-button" data-review>Read more</button>' : ''}
+</article>`;
+}
+function reviewsSection(item, d) {
+  const links = [
+    d.imdb && [`https://www.imdb.com/title/${d.imdb}/reviews/`, 'IMDb'],
+    item.type === 'movie' && [`https://letterboxd.com/tmdb/${item.id}/`, 'Letterboxd'],
+    [`https://www.rottentomatoes.com/search?search=${encodeURIComponent(item.title)}`, 'Rotten Tomatoes'],
+    d.reviewTotal > 0 && [`https://www.themoviedb.org/${item.type}/${item.id}/reviews`, 'TMDB'],
+  ].filter(Boolean);
+  const [shown, rest] = [d.reviews.slice(0, 3), d.reviews.slice(3)];
+  return `<section class="reviews" aria-labelledby="reviews-title">
+<h3 class="section-title" id="reviews-title">Reviews${d.reviewTotal ? ` · ${full(d.reviewTotal)} on TMDB` : ''}</h3>
+${shown.length ? shown.map(reviewHTML).join('') : '<p class="muted">No written reviews on TMDB yet.</p>'}
+${rest.length ? `<div hidden>${rest.map(reviewHTML).join('')}</div><button class="link-button" data-more-reviews>Show ${rest.length} more</button>` : ''}
+<p class="review-links"><span>Read more on</span>${links.map(([href, label]) => `<a class="link-button" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`).join('')}</p>
+</section>`;
+}
+
+function recordView(item) {
+  const key = keyOf(item);
+  const previous = viewed.find(x => keyOf(x) === key);
+  viewed = [{ ...pick(item), at: Date.now(), ...(previous && 'season' in previous ? { season: previous.season } : {}) }, ...viewed.filter(x => keyOf(x) !== key)].slice(0, HISTORY_MAX);
+  write(HISTORY_KEY, viewed);
+  $('history-count').textContent = viewed.length;
+}
+function updateViewed(key, changes) {
+  const entry = viewed.find(x => keyOf(x) === key);
+  if (!entry) return;
+  Object.assign(entry, changes);
+  write(HISTORY_KEY, viewed);
+}
+
 function renderDetail(item, extra) {
   const d = extra && !extra.error ? extra : null;
   const poster = imgURL('w780', item.poster);
@@ -870,14 +1071,18 @@ function renderDetail(item, extra) {
   <p class="overview">${esc(item.overview || 'No overview yet.')}</p>
   ${!extra ? '<div class="loading-block" aria-hidden="true"><div class="skeleton"></div><div class="skeleton" style="width:70%"></div><div class="skeleton" style="width:85%"></div></div>'
     : extra.error ? `<p class="note">${esc(extra.error)}</p>`
-    : watchSection(d) + factsSection(d, item) + castSection(d) + recsSection(d)}
+    : watchSection(d) + (item.type === 'tv' ? episodesSection(item, d) : '') + reviewsSection(item, d) + factsSection(d, item) + castSection(d) + recsSection(d)}
   <p class="note"><a href="${tmdbPage}" target="_blank" rel="noopener noreferrer">View on TMDB ↗</a> · <button data-copy>Copy link</button></p>
 </div>`;
   $('detail-body').querySelectorAll('.detail-media img').forEach(img => img.addEventListener('error', () => img.remove(), { once: true }));
+  const season = $('season-select');
+  if (season) showSeason(item, Number(season.dataset.season));
 }
 function openDetail(item, updateHash = true) {
   const version = ++detailVersion;
+  ++seasonVersion;
   selected = item;
+  recordView(item);
   renderDetail(item, apiKey ? null : { error: 'Add your TMDB API key in API settings to see where to watch, the cast and more.' });
   const dialog = $('detail');
   if (!dialog.open) {
@@ -892,6 +1097,7 @@ function openDetail(item, updateHash = true) {
     if (version !== detailVersion) return;
     selected = { ...item, ...data };
     known.set(keyOf(selected), pick(selected));
+    updateViewed(keyOf(selected), pick(selected));
     const info = $('detail').querySelector('.detail-info');
     const top = info.scrollTop;
     renderDetail(selected, data);
@@ -1024,8 +1230,14 @@ $('grid').addEventListener('error', e => {
   if (e.target.tagName === 'IMG') e.target.closest('.poster')?.classList.add('broken');
 }, true);
 $('detail').addEventListener('error', e => {
-  if (e.target.tagName === 'IMG') e.target.closest('.poster')?.classList.add('broken');
+  if (e.target.tagName === 'IMG') e.target.closest('.poster, .ep-still')?.classList.add('broken');
 }, true);
+$('detail').addEventListener('change', e => {
+  if (e.target.id !== 'season-select' || !selected) return;
+  const n = Number(e.target.value);
+  updateViewed(keyOf(selected), { season: n });
+  showSeason(selected, n);
+});
 
 document.addEventListener('click', async e => {
   const t = e.target;
@@ -1034,6 +1246,22 @@ document.addEventListener('click', async e => {
   else if (action === 'retry' || action === 'browse') load();
   else if (action === 'more') load(true);
   else if (action === 'settings') openSettings();
+  else if (action === 'clear-history') {
+    if (!confirm('Clear the history of titles you’ve looked up?')) return;
+    viewed = [];
+    write(HISTORY_KEY, viewed);
+    renderAll();
+    notify('History cleared.');
+  }
+  else if (t.closest('[data-episode]')) toggleEpisode(t.closest('.episode'));
+  else if (t.closest('[data-review]')) {
+    const open = t.closest('.review').classList.toggle('open');
+    t.closest('[data-review]').textContent = open ? 'Show less' : 'Read more';
+  } else if (t.closest('[data-more-reviews]')) {
+    const button = t.closest('[data-more-reviews]');
+    button.previousElementSibling.hidden = false;
+    button.remove();
+  }
   else if (t.closest('#chips [data-list]')) {
     state.list = t.closest('[data-list]').dataset.list;
     search('');
@@ -1060,6 +1288,7 @@ document.addEventListener('click', async e => {
 $('detail').addEventListener('close', () => {
   selected = null;
   ++detailVersion;
+  if (state.view === 'history') renderAll();
   if (/^#(movie|tv)=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
   if (returnFocus?.isConnected) returnFocus.focus();
 });
@@ -1078,7 +1307,7 @@ $('settings-form').addEventListener('submit', e => {
 });
 
 $('export').addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify({ app: 'reel', exported: new Date().toISOString(), titles: shelf }, null, 2)], { type: 'application/json' });
+  const blob = new Blob([JSON.stringify({ app: 'reel', exported: new Date().toISOString(), titles: shelf, history: viewed }, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = `tmdb-watchlist-${isoDay(0)}.json`;
@@ -1093,7 +1322,12 @@ $('import-file').addEventListener('change', async e => {
   try {
     const data = JSON.parse(await file.text());
     const rows = (Array.isArray(data) ? data : data.titles || []).filter(isStored).map(toEntry);
-    if (!rows.length) throw new Error();
+    const visits = (Array.isArray(data.history) ? data.history : []).filter(isViewed).map(toViewed);
+    if (!rows.length && !visits.length) throw new Error();
+    const seen = new Map(viewed.map(x => [keyOf(x), x]));
+    visits.forEach(x => { if ((seen.get(keyOf(x))?.at || 0) < x.at) seen.set(keyOf(x), x); });
+    viewed = [...seen.values()].sort((a, b) => b.at - a.at).slice(0, HISTORY_MAX);
+    write(HISTORY_KEY, viewed);
     const merged = new Map(shelf.map(x => [keyOf(x), x]));
     const added = rows.filter(x => !merged.has(keyOf(x))).length;
     rows.forEach(x => merged.set(keyOf(x), x));
@@ -1109,7 +1343,7 @@ $('import-file').addEventListener('change', async e => {
 });
 
 document.addEventListener('keydown', e => {
-  if ($('detail').open && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+  if ($('detail').open && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && !e.target.closest('input, select, textarea')) {
     step(e.key === 'ArrowRight' ? 1 : -1);
   } else if (e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey && !e.target.closest('input, select, textarea') && !document.querySelector('dialog[open]')) {
     e.preventDefault();
@@ -1118,6 +1352,12 @@ document.addEventListener('keydown', e => {
 });
 addEventListener('hashchange', readHash);
 addEventListener('storage', e => {
+  if (e.key === HISTORY_KEY) {
+    viewed = readViewed();
+    if (state.view === 'history' && !$('detail').open) renderAll();
+    else updateChrome();
+    return;
+  }
   if (e.key !== SHELF_KEY) return;
   const next = read(SHELF_KEY, []);
   if (!Array.isArray(next)) return;
