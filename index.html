@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0c0d0f">
 <meta name="description" content="Find something to watch: trending movies and TV, where each one is streaming, and a watchlist that remembers.">
-<title>Reel</title>
+<title>TMDB</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23f2c14e'/%3E%3Cpath fill='%230c0d0f' d='M16 12.5v15l12-7.5z'/%3E%3C/svg%3E">
 <style>
 :root {
@@ -253,7 +253,7 @@ footer a:hover, footer button:hover { color: var(--accent); }
   <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="currentColor"/><path fill="var(--bg)" d="M16 12.5v15l12-7.5z"/></svg>
   <div>
     <div class="title-row">
-      <h1>Reel</h1>
+      <h1>TMDB</h1>
       <p class="sync" id="sync" data-state="idle" role="status"></p>
     </div>
     <p id="overview"><strong>—</strong> titles</p>
@@ -310,7 +310,7 @@ footer a:hover, footer button:hover { color: var(--accent); }
     <button class="button" id="empty-action"></button>
   </div>
   <div class="more" id="more" aria-live="polite"></div>
-  <noscript><p>Reel needs JavaScript. You can still <a href="https://www.themoviedb.org/">browse on TMDB</a>.</p></noscript>
+  <noscript><p>This page needs JavaScript. You can still <a href="https://www.themoviedb.org/">browse on TMDB</a>.</p></noscript>
 </main>
 
 <footer>
@@ -330,7 +330,7 @@ footer a:hover, footer button:hover { color: var(--accent); }
   <form class="settings-body" id="settings-form">
     <button type="button" class="close" data-close aria-label="Close settings"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
     <h2 id="settings-title">Your connection</h2>
-    <p>Reel talks to TMDB directly with your free <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">TMDB API key</a>. Either the API key or the read access token works, and it’s saved only in this browser.</p>
+    <p>This page talks to TMDB directly. You can use your own free <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">TMDB API key</a> or read access token; it’s saved only in this browser.</p>
     <label for="api-key">API key or read access token</label>
     <input id="api-key" type="password" autocomplete="off" required>
     <label for="region">Where you watch</label>
@@ -347,6 +347,8 @@ footer a:hover, footer button:hover { color: var(--accent); }
 <script>
 'use strict';
 const $ = id => document.getElementById(id);
+// Built-in v3 API key, used until a key of your own is saved in API settings.
+const DEFAULT_KEY = '65eb3980db9fea7b6b8fbaf0b43a61bd';
 const API_URL = 'https://api.themoviedb.org/3';
 const IMG_URL = 'https://image.tmdb.org/t/p/';
 const HOUR = 3600000;
@@ -410,8 +412,8 @@ function toItem(r, type) {
 const isStored = x => x && Number.isInteger(x.id) && (x.type === 'movie' || x.type === 'tv') && typeof x.title === 'string' && (x.status === 'want' || x.status === 'watched');
 const toEntry = x => ({ ...pick(x), status: x.status, at: Number(x.at) || 0 });
 
-let apiKey = read(API_KEY_KEY, '');
-if (typeof apiKey !== 'string') apiKey = '';
+let apiKey = read(API_KEY_KEY, DEFAULT_KEY);
+if (typeof apiKey !== 'string' || !apiKey) apiKey = DEFAULT_KEY;
 let region = read(REGION_KEY, 'AU');
 if (!Object.hasOwn(REGIONS, region)) region = 'AU';
 let shelf = read(SHELF_KEY, []);
@@ -635,7 +637,7 @@ function updateChrome() {
   if (!list.length && !state.loading) {
     if (state.view === 'want') showEmpty('Your watchlist is empty.', 'Tap the bookmark on anything you want to watch and it’ll be waiting here.', 'Browse titles', 'browse');
     else if (state.view === 'watched') showEmpty('Nothing watched yet.', 'Open a title and mark it watched to keep a record of everything you’ve seen.', 'Browse titles', 'browse');
-    else if (state.error === NO_KEY) showEmpty('Connect to TMDB.', 'Reel reads from The Movie Database. Add your free API key once and it’s saved in this browser.', 'Add API key', 'settings');
+    else if (state.error === NO_KEY) showEmpty('Connect to TMDB.', 'This page reads from The Movie Database. Add your free API key once and it’s saved in this browser.', 'Add API key', 'settings');
     else if (state.error) showEmpty('The projector jammed.', state.error, 'Try again', 'retry');
     else showEmpty('Nothing on screen.', 'No titles matched. Try a different title or loosen the filters.', 'Clear filters', 'clear');
   }
@@ -1079,7 +1081,7 @@ $('export').addEventListener('click', () => {
   const blob = new Blob([JSON.stringify({ app: 'reel', exported: new Date().toISOString(), titles: shelf }, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `reel-${isoDay(0)}.json`;
+  a.download = `tmdb-watchlist-${isoDay(0)}.json`;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 });
@@ -1102,7 +1104,7 @@ $('import-file').addEventListener('change', async e => {
     if (state.view === 'browse') renderAll();
     else showShelf(state.view);
   } catch {
-    notify('That file isn’t a Reel export.');
+    notify('That file isn’t a watchlist export.');
   }
 });
 
