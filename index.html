@@ -73,6 +73,10 @@ h1 { font: 400 30px/1.1 var(--serif); letter-spacing: -.02em; margin: 0; }
 .search:focus-within { border-color: var(--line-strong); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
 .search input { flex: 1; min-width: 0; border: 0; background: none; outline: none; padding: 11px 0; font-size: 14px; color: var(--text); }
 .search input::placeholder { color: var(--faint); }
+.search input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
+.search-clear { display: grid; place-items: center; flex: none; width: 26px; height: 26px; margin-right: -6px; padding: 0; border: 0; border-radius: 50%; background: var(--line); color: var(--muted); }
+.search-clear:hover { background: var(--line-strong); color: var(--text); }
+.search-clear .icon { width: 12px; height: 12px; stroke-width: 2.2; }
 .search kbd { font: 12px var(--sans); border: 1px solid var(--line-strong); border-radius: 5px; padding: 0 6px; }
 select, .button { background-color: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; font-size: 14px; }
 select { appearance: none; max-width: 190px; padding-right: 34px; text-overflow: ellipsis; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%239a9fa7' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 12px; }
@@ -363,7 +367,8 @@ footer a:hover, footer button:hover { color: var(--accent); }
         <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
         <label class="sr-only" for="search">Search movies, TV and people</label>
         <input type="search" id="search" maxlength="100" placeholder="Search movies, TV shows and people…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggest">
-        <kbd aria-hidden="true">/</kbd>
+        <button type="button" class="search-clear" id="search-clear" aria-label="Clear search" title="Clear search" hidden><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+        <kbd aria-hidden="true" id="search-kbd">/</kbd>
         <div class="suggest" id="suggest" role="listbox" aria-label="Recent searches and titles" hidden></div>
       </form>
       <div class="selects">
@@ -558,6 +563,7 @@ const state = {
 };
 $('type').value = state.type;
 $('search').value = state.query;
+syncClear();
 $('region').innerHTML = Object.entries(REGIONS).map(([code, name]) => `<option value="${code}">${esc(name.replace(/^the /, 'The '))}</option>`).join('');
 
 const genres = { movie: [], tv: [] };
@@ -1414,6 +1420,7 @@ function search(query) {
   clearTimeout(searchTimer);
   state.query = query.trim().slice(0, 100);
   $('search').value = state.query;
+  syncClear();
   load();
 }
 function clearFilters() {
@@ -1530,6 +1537,25 @@ $('search').addEventListener('focus', () => {
 });
 $('search').addEventListener('blur', closeSuggest);
 $('search').addEventListener('input', () => {
+  suggestIndex = -1;
+  syncClear();
+  renderSuggest();
+});
+// The clear button swaps in for the "/" hint whenever there's text to clear.
+function syncClear() {
+  const empty = !$('search').value;
+  $('search-clear').hidden = empty;
+  $('search-kbd').hidden = !empty;
+}
+$('search-clear').addEventListener('mousedown', e => e.preventDefault());
+$('search-clear').addEventListener('click', () => {
+  $('search').focus();
+  if (state.query || state.view !== 'browse') search('');
+  else {
+    clearTimeout(searchTimer);
+    $('search').value = '';
+    syncClear();
+  }
   suggestIndex = -1;
   renderSuggest();
 });
